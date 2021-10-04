@@ -205,14 +205,16 @@ public class CustomArrayServiceImpl implements CustomArrayService {
 	}
 
 	@Override
-	public void sortStream(CustomArray array) {
+	public void sortStream(CustomArray arr) {
 
+		int [] sortedArray = IntStream.of(arr.getArray()).sorted().toArray();
+		arr.setArray(sortedArray);
 	}
 
 	@Override
-	public void bubbleSort(CustomArray array) {
+	public void bubbleSort(CustomArray arr) {
 
-		int[] currentArray = array.getArray();
+		int[] currentArray = arr.getArray();
 		boolean needMoreIterations = true;
 		int end = currentArray.length;
 
@@ -227,13 +229,13 @@ public class CustomArrayServiceImpl implements CustomArrayService {
 			}
 			end--;
 		}
-		array.setArray(currentArray);
+		arr.setArray(currentArray);
 	}
 
 	@Override
-	public void selectionSort(CustomArray array) {
+	public void selectionSort(CustomArray arr) {
 
-		int[] currentArray = array.getArray();
+		int[] currentArray = arr.getArray();
 
 		for (int i = 0; i < currentArray.length; i++) {
 			int indexMinElement = i;
@@ -246,12 +248,12 @@ public class CustomArrayServiceImpl implements CustomArrayService {
 			swap(currentArray, i, indexMinElement);
 		}
 
-		array.setArray(currentArray);
+		arr.setArray(currentArray);
 	}
 
 	@Override
-	public void insertionSort(CustomArray array) {
-		int[] currentArray = array.getArray();
+	public void insertionSort(CustomArray arr) {
+		int[] currentArray = arr.getArray();
 
 		for (int i = 1; i < currentArray.length; i++) {
 			int currentElement = currentArray[i];
@@ -264,12 +266,12 @@ public class CustomArrayServiceImpl implements CustomArrayService {
 			currentArray[j + 1] = currentElement;
 		}
 
-		array.setArray(currentArray);
+		arr.setArray(currentArray);
 	}
 
 	@Override
-	public void shellSort(CustomArray array) {
-		int[] currentArray = array.getArray();
+	public void shellSort(CustomArray arr) {
+		int[] currentArray = arr.getArray();
 
 		int arrLenght = currentArray.length;
 
@@ -286,7 +288,7 @@ public class CustomArrayServiceImpl implements CustomArrayService {
 			}
 		}
 
-		array.setArray(currentArray);
+		arr.setArray(currentArray);
 	}
 
 	private void swap(int[] arr, int index1, int index2) {
