@@ -20,10 +20,10 @@ public class StringValidator {
 		return instance;
 	}
 
-	// correct line 	5;-30;17;1258;
-	// incorrect line 	5,-30,5
-	// 					8;r2;2;9
-	// 					3;11111111111111111111111111;5
+	//	5;-30;17;1258; // correct line 	
+	//	5,-30,5 // wrong line
+	// 	8;r2;2;9 // wrong line
+	// 	3;11111111111111111111111111;5 // wrong line
 
 	public boolean validate(String parameter) {
 
@@ -40,9 +40,9 @@ public class StringValidator {
 		return isValid;
 	}
 
-	// cheсk only the substring which containes an int overflow candidate
-	// 3000000000 - will check
-	// -300000000 - will not check
+	//	cheсk only the substring which containes an int overflow candidate
+	//	3000000000 - will check
+	//	-300000000 - will not check
 	private boolean additionalValidateToIntOverflow(String parameter) {
 
 		boolean isValid = true;
