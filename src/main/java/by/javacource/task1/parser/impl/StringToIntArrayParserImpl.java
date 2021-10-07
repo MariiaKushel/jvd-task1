@@ -9,11 +9,9 @@ public class StringToIntArrayParserImpl implements StringToIntArrayParser {
 	public int[] parse(String line) {
 
 		String[] strArr = line.split(STRING_SPLIT_REGEX);
-
 		int[] intArr = new int[strArr.length];
 
 		for (int i = 0; i < strArr.length; i++) {
-
 			intArr[i] = Integer.parseInt(strArr[i]);
 		}
 

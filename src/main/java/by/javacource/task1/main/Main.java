@@ -3,16 +3,18 @@ package by.javacource.task1.main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.javacource.task1.creater.ArrayCreater;
-import by.javacource.task1.creater.impl.ArrayCreaterImpl;
+import by.javacource.task1.creater.CustomArrayCreater;
+import by.javacource.task1.creater.impl.CustomArrayCreaterImpl;
 import by.javacource.task1.entity.CustomArray;
 import by.javacource.task1.exception.CustomException;
 import by.javacource.task1.parser.StringToIntArrayParser;
 import by.javacource.task1.parser.impl.StringToIntArrayParserImpl;
 import by.javacource.task1.reader.CustomFileReader;
 import by.javacource.task1.reader.impl.CustomFileReaderImpl;
-import by.javacource.task1.service.CustomArrayService;
-import by.javacource.task1.service.impl.CustomArrayServiceImpl;
+import by.javacource.task1.service.CustomArrayActionService;
+import by.javacource.task1.service.CustomArraySortingService;
+import by.javacource.task1.service.impl.CustomArrayActionServiceImpl;
+import by.javacource.task1.service.impl.CustomArraySortingServiceImpl;
 
 
 public class Main {
@@ -23,8 +25,9 @@ public class Main {
 
 		CustomFileReader reader = new CustomFileReaderImpl();
 		StringToIntArrayParser pareser = new StringToIntArrayParserImpl();
-		ArrayCreater creater = new ArrayCreaterImpl();
-		CustomArrayService service = new CustomArrayServiceImpl();
+		CustomArrayCreater creater = new CustomArrayCreaterImpl();
+		CustomArrayActionService actionService = new CustomArrayActionServiceImpl();
+		CustomArraySortingService sortService = new CustomArraySortingServiceImpl();
 
 		try {
 			String line = reader.read("src\\main\\resources\\data\\arrays.txt");
@@ -36,63 +39,65 @@ public class Main {
 			int resultInt;
 			double resultDouble;
 
-			resultInt = service.findMaxValue(array);
+			logger.info("Base array > " + array);
+			
+			resultInt = actionService.findMaxValue(array);
 			logger.info("Max value > " + resultInt);
 			
-			resultInt = service.findMaxValueStream(array);
+			resultInt = actionService.findMaxValueStream(array);
 			logger.info("Max value (stream) > " + resultInt);
 			
-			resultInt = service.findMinValue(array);
+			resultInt = actionService.findMinValue(array);
 			logger.info("Min value > " + resultInt);
 			
-			resultInt = service.findMinValueStream(array);
+			resultInt = actionService.findMinValueStream(array);
 			logger.info("Min value (stream) > " + resultInt);
 			
-			resultDouble = service.findMidValue(array);
-			logger.info("Mid value > " + resultInt);
+			resultDouble = actionService.findMidValue(array);
+			logger.info("Mid value > " + resultDouble);
 			
-			resultDouble = service.findMidValueStream(array);
-			logger.info("Mid value (stream) > " + resultInt);
+			resultDouble = actionService.findMidValueStream(array);
+			logger.info("Mid value (stream) > " + resultDouble);
 					
-			resultInt = service.countSumOfElements(array);
+			resultInt = actionService.countSumOfElements(array);
 			logger.info("Sum of elements > " + resultInt);
 			
-			resultInt = service.countSumOfElementsStream(array);
+			resultInt = actionService.countSumOfElementsStream(array);
 			logger.info("Sum of elements (stream )> " + resultInt);
 			
-			resultInt = service.countPositiveElements(array);
+			resultInt = actionService.countPositiveElements(array);
 			logger.info("Positive elements> " + resultInt);
 			
-			resultInt = service.countPositiveElementsStream(array);
+			resultInt = actionService.countPositiveElementsStream(array);
 			logger.info("Positive elements (stream) > " + resultInt);
 			
-			resultInt = service.countNegativeElements(array);
+			resultInt = actionService.countNegativeElements(array);
 			logger.info("Negative elements > " + resultInt);
 			
-			resultInt = service.countNegativeElementsStream(array);
+			resultInt = actionService.countNegativeElementsStream(array);
 			logger.info("Negative elements (stream) > " + resultInt);
 			
-			service.changeElementsBelowMiddle(array, 99);
+			actionService.changeElementsBelowMiddle(array, 99);
 			logger.info("Array after changes > " + array);
 			
-			//service.changeElementsBelowMiddleStream(array, 99);
+			//actionService.changeElementsBelowMiddleStream(array, 99);
 			//logger.info("Array after changes (stream) > " + array);
 
-			//service.bubbleSort(array);
-			//logger.info("Array after bubbleSort > " + array);
+			sortService.bubbleSort(array);
+			logger.info("Array after bubbleSort > " + array);
 			
-			//service.selectionSort(array);
+			//sortService.selectionSort(array);
 			//logger.info("Array after selectionSort > " + array);
 			
-			//service.insertionSort(array);
+			//sortService.insertionSort(array);
 			//logger.info("Array after insertionSort > " + array);
 			
-			//service.shellSort(array);
+			//sortService.shellSort(array);
 			//logger.info("Array after shellSort > " + array);
 			
-			//service.sortStream(array);
+			//sortService.sortStream(array);
 			//logger.info("Array after sortStream > " + array);
-			
+				
 		} catch (CustomException e) {
 			logger.error(e);
 			e.printStackTrace();

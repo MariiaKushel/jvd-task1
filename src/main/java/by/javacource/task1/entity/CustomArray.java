@@ -11,14 +11,14 @@ public class CustomArray {
 	}
 
 	public CustomArray(int... array) {
-		this.array = array;
+		this.array = Arrays.copyOf(array, array.length);
 	}
 
 	public int[] getArray() {
 		return Arrays.copyOf(array, array.length);
 	}
 
-	public void setArray(int[] array) {
+	public void setArray(int... array) {
 		this.array = Arrays.copyOf(array, array.length);
 	}
 
@@ -46,7 +46,7 @@ public class CustomArray {
 
 	@Override
 	public String toString() {
-		return "CustomArray [array=" + Arrays.toString(array) + "]";
+		return "CustomArray " + Arrays.toString(array);
 	}
 
 }

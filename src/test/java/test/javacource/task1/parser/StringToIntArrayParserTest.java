@@ -23,7 +23,7 @@ public class StringToIntArrayParserTest {
 		return new Object[][] { 
 			{ "5;", new int[] { 5 } }, 
 			{ "8;-3;00011;6;", new int[] { 8, -3, 11, 6 } },
-			{ "09;0;17;-324;", new int[] { 9, 0, 17, -324 } } };
+			{ "-09;0;17;-324;", new int[] { -9, 0, 17, -324 } } };
 	}
 
 	@Test(dataProvider = "providerParsing")

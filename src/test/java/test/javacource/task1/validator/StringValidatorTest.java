@@ -8,14 +8,16 @@ import by.javacource.task1.validator.StringValidator;
 
 public class StringValidatorTest {
 
-	private static StringValidator validator = StringValidator.getInstance();
+	private static  StringValidator validator = StringValidator.getInstance();
 
 	@DataProvider(name = "providerStringValidation")
 	public static Object[][] createData() {
 		return new Object[][] { 
 			{ "1;-2;3;-8;0;", true }, 
 			{ "1;8;-3.2;1;", false }, 
-			{ "1;-2147483699;8;", false } };
+			{ "7;2;-3A;1;", false },
+			{ "1;-3000000000;8;", false },
+			{ "3;11111111111111111111111111111111111;8;8;", false }};
 	}
 
 	@Test(dataProvider = "providerStringValidation")

@@ -5,17 +5,17 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import by.javacource.task1.creater.ArrayCreater;
-import by.javacource.task1.creater.impl.ArrayCreaterImpl;
+import by.javacource.task1.creater.CustomArrayCreater;
+import by.javacource.task1.creater.impl.CustomArrayCreaterImpl;
 import by.javacource.task1.entity.CustomArray;
 
-public class ArrayCreaterTest {
+public class CustomArrayCreaterTest {
 
-	private ArrayCreater creater;
+	private CustomArrayCreater creater;
 
 	@BeforeTest
 	public void initialize() {
-		creater = new ArrayCreaterImpl();
+		creater = new CustomArrayCreaterImpl();
 	}
 
 	@Test

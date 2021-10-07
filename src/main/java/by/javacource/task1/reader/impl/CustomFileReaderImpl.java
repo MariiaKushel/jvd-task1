@@ -16,27 +16,26 @@ import by.javacource.task1.validator.StringValidator;
 public class CustomFileReaderImpl implements CustomFileReader {
 
 	static Logger logger = LogManager.getLogger();
-	private StringValidator validator = StringValidator.getInstance();
 
 	public String read(String pathToFile) throws CustomException {
+		
+		StringValidator validator = StringValidator.getInstance();
+				
+		String currentLine = "";
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(new File(pathToFile)))) {
 
-			String currentLine = reader.readLine();
+			boolean isCorrectLine = false;
 
-			boolean isCorrectData = false;
-
-			while (!isCorrectData && (currentLine = reader.readLine()) != null) {
-				isCorrectData = validator.validate(currentLine);
+			while (!isCorrectLine && (currentLine = reader.readLine()) != null) {
+				isCorrectLine = validator.validate(currentLine);
 			}
 
 			if (currentLine == null) {
 				logger.error("File " + pathToFile + " does not containe correct data.");
 				throw new CustomException("File " + pathToFile + " does not containe correct data.");
 			}
-
-			return currentLine;
-
+			
 		} catch (FileNotFoundException e) {
 			logger.error("File " + pathToFile + " was not found.", e);
 			throw new CustomException("File " + pathToFile + " was not found.", e);
@@ -46,6 +45,7 @@ public class CustomFileReaderImpl implements CustomFileReader {
 					"Failed or interrupted I/O operations while working on the file " + pathToFile + ".", e);
 		}
 
+		return currentLine;
 	}
 
 }
