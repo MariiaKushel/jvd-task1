@@ -62,8 +62,8 @@ public class CustomArrayActionServiceTest {
 
 	@Test
 	public void testCountSumOfElements() throws CustomException {
-		int actual = service.countSumOfElements(new CustomArray(2, -4, 0, 12));
-		int expected = 10;
+		int actual = service.countSumOfElements(new CustomArray(0, 2147483647, 0, 0));
+		int expected = 2147483647;
 		Assert.assertEquals(actual, expected);
 	}
 
@@ -74,8 +74,8 @@ public class CustomArrayActionServiceTest {
 
 	@Test
 	public void testCountSumOfElementsStream() throws CustomException {
-		int actual = service.countSumOfElementsStream(new CustomArray(0, 100, 1, 10));
-		int expected = 111;
+		int actual = service.countSumOfElements(new CustomArray(0, -2147483648, 0, 0));
+		int expected = -2147483648;
 		Assert.assertEquals(actual, expected);
 	}
 
@@ -114,9 +114,9 @@ public class CustomArrayActionServiceTest {
 
 	@Test
 	public void testChangeElementsBelowMiddle() {
-		CustomArray actual = new CustomArray(2, -4, 0, 12);
+		CustomArray actual = new CustomArray(3, -4, 0, 11);
 		service.changeElementsBelowMiddle(actual, 999);
-		CustomArray expected = new CustomArray(2, 999, 999, 12);
+		CustomArray expected = new CustomArray(3, 999, 999, 11);
 		Assert.assertEquals(actual, expected);
 	}
 

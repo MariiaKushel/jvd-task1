@@ -24,7 +24,6 @@ public class StringValidator {
 	//	5,-30,5 // wrong line
 	// 	8;r2;2;9 // wrong line
 	// 	3;11111111111111111111111111;5 // wrong line
-
 	public boolean validate(String parameter) {
 
 		Pattern pattern = Pattern.compile(STRING_AS_INT_ARRAY_REGEX);

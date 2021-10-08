@@ -7,7 +7,7 @@ public class CustomArray {
 	private int[] array;
 
 	public CustomArray() {
-
+		super();
 	}
 
 	public CustomArray(int... array) {

@@ -105,7 +105,7 @@ public class CustomArrayActionServiceImpl implements CustomArrayActionService {
 				delta = Integer.MIN_VALUE - sum;
 			}
 
-			if ((delta > 0 && delta > element) || (delta < 0 && delta < element)) {
+			if ((delta >= 0 && delta >= element) || (delta < 0 && delta <= element)) {
 				sum = sum + element;
 			} else {
 				logger.error("Int overflow");
@@ -125,7 +125,7 @@ public class CustomArrayActionServiceImpl implements CustomArrayActionService {
 
 		int sumInt;
 
-		if (sumLong < Integer.MAX_VALUE && sumLong > Integer.MIN_VALUE) {
+		if (sumLong <= Integer.MAX_VALUE && sumLong >= Integer.MIN_VALUE) {
 			sumInt = (int) sumLong;
 		} else {
 			logger.error("Int overflow");
