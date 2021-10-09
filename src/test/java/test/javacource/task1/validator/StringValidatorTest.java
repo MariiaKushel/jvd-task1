@@ -1,14 +1,16 @@
 package test.javacource.task1.validator;
 
 import org.testng.annotations.Test;
+
+import by.javacource.task1.validator.StringValidator;
+import by.javacource.task1.validator.impl.StringValidatorImpl;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 
-import by.javacource.task1.validator.StringValidator;
-
 public class StringValidatorTest {
 
-	private static  StringValidator validator = StringValidator.getInstance();
+	private static  StringValidator validator = StringValidatorImpl.getInstance();
 
 	@DataProvider(name = "providerStringValidation")
 	public static Object[][] createData() {

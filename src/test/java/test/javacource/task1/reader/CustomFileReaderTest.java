@@ -30,11 +30,6 @@ public class CustomFileReaderTest {
 		reader.read("src\\test\\resources\\testdata\\notFountArrays.txt");
 	}
 
-	@Test(expectedExceptions = CustomException.class, expectedExceptionsMessageRegExp = ".*does not containe correct data.*")
-	public void testReadExceptionNotCorrectData() throws CustomException {
-		reader.read("src\\test\\resources\\testdata\\notCorrectArrays.txt");
-	}
-
 	@AfterMethod
 	public void clean() {
 		reader = null;

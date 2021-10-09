@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import by.javacource.task1.exception.CustomException;
 import by.javacource.task1.parser.StringToIntArrayParser;
 import by.javacource.task1.parser.impl.StringToIntArrayParserImpl;
 
@@ -27,9 +28,15 @@ public class StringToIntArrayParserTest {
 	}
 
 	@Test(dataProvider = "providerParsing")
-	public void testParse(String str, int[] expected) {
+	public void testParse(String str, int[] expected) throws CustomException {
 		int[] actual = parser.parse(str);
 		Assert.assertEquals(actual, expected);
+	}
+	
+	@Test(expectedExceptions = CustomException.class)
+	public void testParseException() throws CustomException {
+		String str = "";
+		parser.parse(str);
 	}
 
 	@AfterMethod

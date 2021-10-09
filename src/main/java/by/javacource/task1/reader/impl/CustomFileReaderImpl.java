@@ -12,16 +12,18 @@ import org.apache.logging.log4j.Logger;
 import by.javacource.task1.exception.CustomException;
 import by.javacource.task1.reader.CustomFileReader;
 import by.javacource.task1.validator.StringValidator;
+import by.javacource.task1.validator.impl.StringValidatorImpl;
 
 public class CustomFileReaderImpl implements CustomFileReader {
 
 	static Logger logger = LogManager.getLogger();
+	private static final String EMPTY_STRING = "";
 
 	public String read(String pathToFile) throws CustomException {
-		
-		StringValidator validator = StringValidator.getInstance();
-				
-		String currentLine = "";
+
+		StringValidator validator = StringValidatorImpl.getInstance();
+
+		String currentLine = EMPTY_STRING;
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(new File(pathToFile)))) {
 
@@ -32,10 +34,9 @@ public class CustomFileReaderImpl implements CustomFileReader {
 			}
 
 			if (currentLine == null) {
-				logger.error("File " + pathToFile + " does not containe correct data.");
-				throw new CustomException("File " + pathToFile + " does not containe correct data.");
+				currentLine = EMPTY_STRING;
 			}
-			
+
 		} catch (FileNotFoundException e) {
 			logger.error("File " + pathToFile + " was not found.", e);
 			throw new CustomException("File " + pathToFile + " was not found.", e);

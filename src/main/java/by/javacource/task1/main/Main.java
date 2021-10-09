@@ -22,7 +22,7 @@ public class Main {
 	static Logger logger = LogManager.getLogger();
 
 	public static void main(String[] args) {
-
+		
 		CustomFileReader reader = new CustomFileReaderImpl();
 		StringToIntArrayParser pareser = new StringToIntArrayParserImpl();
 		CustomArrayCreater creater = new CustomArrayCreaterImpl();
